@@ -1,0 +1,36 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon node ./src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.33.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "express-fileupload": "^1.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "mailgun-js": "^0.22.0",
+    "mongoose": "^6.8.0",
+    "nodemailer": "^6.8.0",
+    "open": "^8.4.1",
+    "read-excel-file": "^5.6.0",
+    "request": "^2.88.2",
+    "server-destroy": "^1.0.1",
+    "stripe": "^11.6.0",
+    "twilio": "^3.30.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
