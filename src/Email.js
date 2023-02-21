@@ -8,7 +8,7 @@ const trans = nodemailer.createTransport({
     secure: true,
     auth: {
       user: 'hola@chipsi.mx',
-      pass: 'Cheapcgrowth@1'
+      pass: '20894114Ce@'
     }
 });
 
@@ -25,7 +25,7 @@ const trans = nodemailer.createTransport({
 
 const sendMail = async(to, subject, html, callback)=>{
     const message = {
-        from: process.env.ZOHO_USER, // Sender address
+        from: 'hola@chipsi.mx', // Sender address
         to: to,         // List of recipients
         subject: subject, // Subject line
         html: html
