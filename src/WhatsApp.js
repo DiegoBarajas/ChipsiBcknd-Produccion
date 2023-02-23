@@ -1,42 +1,55 @@
-const botId = '102209219477066';
-const bearerToken = 'EAAJPrh0JyNcBALi91PtCtms7qZA1972AqhEb29zStb9EIW2ZAJGrZAp2M268Grfg5W5lo5kYAQgVvdbKXl2Wxw2OyaIlnI6DfmCuGa4lBPBUevEmgpAbM8xJZA3mSKUqle3sv8HZBNU9EjZApReR3QzyyCToZCUL0c2x3GSPmgDCLNMrf6LylKBZAsh3HQZA4s3ipVsZAz8twCcp97LuJcoGbDXuK5WSNAIHEZD';
 
-const url = 'https://graph.facebook.com/v15.0/'+botId+'/messages';
+const { createBot } = require('whatsapp-cloud-api');
 
+const sender = {}
 
-const sendWhatsApp = async(msg, to)=>{
-  var data = {
-    messaging_product: 'whatsapp',
-    to: '0dasdsa',
-    type: 'template',
-    template: {
-      name:'recogerdispositivo ',
-      language:{ code: 'es_MX' }
-    }
-  };
-  
-  var postReq = {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer ' + bearerToken,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data),
-    json: true
-  };
+sender.sendWhApp = async(to, nombre, dispositivo, mensaje)=>{
 
-  
-  const res = await fetch(url, postReq)
-    .then(data => {
-      return data;
-    })
-    .catch(error => {
-      console.log(error)
+    try {
+      // replace the values below
+      const from = '102209219477066';
+      const token = 'EAAJPrh0JyNcBAL2M6diS7nTcqTap8rrLRxgtjZA2AbOnuJ2JO7PbFArQYuMugXoe6ZBEvhISPRecTshpSaPJyj1uQGUAbHQ30NTgcuOC1PIGrRz9GMlQZClc4lAj850MYwjP7RqRDQH4CjnleyVx3BZAPZCK6XEO8aYnS5cFfCNbpxoKsm9xoZAR2BW0d7GEZBVsGzaZBvdSYDyNyhNID5CwnFZCH2ZBAyweEZD';
+      const webhookVerifyToken = 'YOUR_WEBHOOK_VERIFICATION_TOKEN';
+
+      // Create a bot that can send messages
+      const bot = createBot(from, token);
+
+      // Send text message 
+      const result = await bot.sendTemplate(to, 'recogerdispositivo ', 'es_MX', [
+        {
+          "type": "header",
+          "parameters": [
+            {
+              "type": "text",
+              "text": nombre
+            }
+          ]
+        },
+
+        {
+          "type": "body",
+          "parameters": [
+            {
+              "type": "text",
+              "text": dispositivo
+            },
+            {
+              "type": "text",
+              "text": mensaje
+            }
+          ]
+        }
+      ]);
+
+      console.log(result)
+      return true;
+      
+    } catch (err) {
+      console.log("Error al enviar el WhatsApp");
+      console.log(err);
       return false;
-    });
+    }
 
-    console.log('\n\n\nRESPUESTA: '+res)
-  
 }
 
-module.exports = sendWhatsApp;
+module.exports = sender;

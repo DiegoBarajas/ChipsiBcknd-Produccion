@@ -2,6 +2,7 @@ require('dotenv').config;
 require('./database');
 
 const app = require('./app');
+const sendMail = require('./Email');
 
 async function main(){
     await app.listen(app.get('port'));

@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const sendMail = require('../../Email');
-const sendWhatsApp = require('../../WhatsApp');
+const {sendWhApp} = require('../../WhatsApp')
 const router = Router();
 
 const notificar = async(req, res)=>{
@@ -15,9 +15,9 @@ const notificar = async(req, res)=>{
     } = req.body
 
     const whappTo = '52'+telefono;
-    const whappMsg = `Hola ${nombre}\nTu dispositivo ${dispositivo} \n\n ${mensaje}`;
+    console.log(whappTo);
 
-    //const resWhApp = await sendWhatsApp(whappMsg, whappTo)
+    const resWhApp = await sendWhApp(whappTo, nombre, dispositivo, mensaje);
 
     sendMail(
         correo, 
@@ -27,7 +27,10 @@ const notificar = async(req, res)=>{
         <p>${mensaje} </p>`,
         (resMail)=>{
             console.log(resMail)
-            res.json({email: resMail});
+            res.json({
+                email: resMail,
+                whatsapp: resWhApp
+            });
         }
     );
 

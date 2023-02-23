@@ -29,7 +29,8 @@
     "request": "^2.88.2",
     "server-destroy": "^1.0.1",
     "stripe": "^11.6.0",
-    "twilio": "^3.30.0"
+    "twilio": "^3.30.0",
+    "whatsapp-cloud-api": "^0.2.6"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
