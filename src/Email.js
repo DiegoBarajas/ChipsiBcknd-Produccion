@@ -2,13 +2,14 @@ const nodemailer = require('nodemailer');
 require('dotenv').config;
 
 
-const trans = nodemailer.createTransport({
-    host: 'smtp.zoho.com',
-    port: 465,
-    auth: {
-      user: 'hola@chipsi.mx',
-      pass: '20894114Ce@'
-    }
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 465,
+  auth: {
+    user: 'cotiapp.sender@gmail.com',
+    pass: 'dbddvklzzigavyci',
+    
+  }
 });
 
 
