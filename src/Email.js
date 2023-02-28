@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 require('dotenv').config;
 
 
-const trans = nodemailer.createTransport({
+var trans = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 465,
   auth: {
@@ -12,20 +12,20 @@ const trans = nodemailer.createTransport({
   }
 });
 
-
-/*const trans = nodemailer.createTransport({
+/*
+trans = nodemailer.createTransport({
   host: "smtp.mailtrap.io",
   port: 2525,
   auth: {
     user: "2cdfed175fedf0",
     pass: "a70214760987f5"
   }
-});*/
-
+});
+*/
 
 const sendMail = async(to, subject, html, callback)=>{
     const message = {
-        from: 'hola@chipsi.mx', // Sender address
+        from: 'cotiapp.sender@gmail.com', // Sender address
         to: to,         // List of recipients
         subject: subject, // Subject line
         html: html
@@ -39,6 +39,7 @@ const sendMail = async(to, subject, html, callback)=>{
     trans.sendMail(message, function(err, info) {
         if (err) {
           console.log(err)
+          res = false;
         } else {
           console.log(info);
           res = true;
