@@ -8,7 +8,9 @@ const schema = new Schema({
     correo: {type: String, required: true},
     telefono: {type: String, required: true},
     direccion: {type: String, required: true},
-    rango: {type: String, required: true}
+    rango: {type: String, required: true},
+    precio: {type: Number, required: true},
+    status: {type: Number, default: 0}        
 }, {
     timestamps: true
 });

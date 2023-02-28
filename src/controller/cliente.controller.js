@@ -17,7 +17,8 @@ controller.subirCliente = async(req, res)=>{
         correo,
         telefono,
         direccion,
-        rango
+        rango,
+        precio
     } = req.body;
 
     const newCliente = new Cliente({
@@ -28,7 +29,8 @@ controller.subirCliente = async(req, res)=>{
         correo,
         telefono,
         direccion,
-        rango
+        rango,
+        precio
     });
     
     res.json(await newCliente.save());
@@ -46,6 +48,16 @@ controller.eliminarCliente = async(req, res)=>{
     const {id} = req.params;
 
     res.json(await Cliente.findByIdAndDelete(id));
+}
+
+controller.actualizarStatus = async(req, res)=>{
+    const {id} = req.params;
+
+    const cliente = await Cliente.findById(id);
+    const newStatus = cliente.status+1;
+    res.json(await Cliente.findByIdAndUpdate(id,{
+        status: newStatus
+    }));
 }
 
 module.exports = controller;
